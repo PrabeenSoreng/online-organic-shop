@@ -20,6 +20,8 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { UserService } from './services/user.service';
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -31,8 +33,8 @@ const routes: Routes = [
   {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
   {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
 
-  {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard]},
-  {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard]},
+  {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
 
   {path: '**', redirectTo: ''}
 ];
@@ -61,7 +63,9 @@ const routes: Routes = [
   ],
   providers: [
     AuthService,
-    AuthGuard
+    UserService,
+    AuthGuard,
+    AdminAuthGuard
   ],
   bootstrap: [AppComponent]
 })
