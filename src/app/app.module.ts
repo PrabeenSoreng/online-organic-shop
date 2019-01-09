@@ -23,6 +23,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CategoryService } from './services/category.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -67,6 +68,7 @@ const routes: Routes = [
   providers: [
     AuthService,
     UserService,
+    CategoryService,
     AuthGuard,
     AdminAuthGuard
   ],
