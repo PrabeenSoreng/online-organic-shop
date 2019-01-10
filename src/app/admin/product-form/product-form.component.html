@@ -46,11 +46,11 @@
         </div>
         <div class="col-md-6">
             <div class="row justify-content-center">
-                <div class="card" style="width: 28rem;">
+                <div *ngIf="product.title || product.price || product.imageUrl" class="card" style="width: 28rem;">
                     <img [src]="product.imageUrl" class="card-img-top" alt="" *ngIf="product.imageUrl">
                     <div class="card-body">
-                        <h5 class="card-title">{{product.title}}</h5>
-                        <p class="card-text">{{product.price | currency: 'USD':"symbol"}}</p>
+                        <h3 class="card-title">{{product.title}}</h3>
+                        <p class="card-text"> <strong>{{product.price | currency: 'USD':"symbol"}}</strong></p>
                     </div>
                 </div>
             </div>
