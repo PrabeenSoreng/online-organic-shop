@@ -46,13 +46,7 @@
         </div>
         <div class="col-md-6">
             <div class="row justify-content-center">
-                <div *ngIf="product.title || product.price || product.imageUrl" class="card" style="width: 28rem;">
-                    <img [src]="product.imageUrl" class="card-img-top" alt="" *ngIf="product.imageUrl">
-                    <div class="card-body">
-                        <h3 class="card-title">{{product.title}}</h3>
-                        <p class="card-text"> <strong>{{product.price | currency: 'USD':"symbol"}}</strong></p>
-                    </div>
-                </div>
+                <app-product-card [product]="product" [show-actions]="false"></app-product-card>
             </div>
         </div>
     </div>
