@@ -35,6 +35,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -91,6 +92,7 @@ const routes: Routes = [
     UserService,
     CategoryService,
     ProductService,
+    ShoppingCartService,
     AuthGuard,
     AdminAuthGuard
   ],
