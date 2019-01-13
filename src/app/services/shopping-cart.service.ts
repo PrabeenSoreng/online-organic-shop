@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Product } from '../models/product';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 
 interface ItemProd {
   product: Product;
@@ -21,7 +21,8 @@ export class ShoppingCartService {
     });
   }
 
-  private getCart(cartId: string) {
+  async getCart() {
+    let cartId = await this.getOrCreateCartId();
     return this.db.object('/shopping-carts/' + cartId);
   }
 
@@ -29,7 +30,7 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
   }
 
-  private async getOrCreateCartId() {
+  private async getOrCreateCartId(): Promise<string> {
     let cartId = localStorage.getItem('cartId');
     if(cartId) return cartId;
     
@@ -39,6 +40,14 @@ export class ShoppingCartService {
   }
 
   async addToCart(product: Product) {
+    this.updateItemQuantity(product, 1);
+  }
+
+  async removeFromCart(product: Product) {
+    this.updateItemQuantity(product, -1);
+  }
+
+  private async updateItemQuantity(product: Product, change: number) {
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId, product.key);
     item$.snapshotChanges().pipe(
@@ -47,7 +56,7 @@ export class ShoppingCartService {
       const data = item.payload.val() as ItemProd;
       item$.update({
         product: product,
-        quantity: (data && data.quantity || 0) + 1
+        quantity: (data && data.quantity || 0) + change
       });
     });
   }
