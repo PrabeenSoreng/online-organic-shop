@@ -13,7 +13,12 @@
                 <a class="nav-link" routerLink="/products">Products</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/shopping-cart">Shopping Cart</a>
+                <a class="nav-link" routerLink="/shopping-cart">
+                    Shopping Cart
+                    <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
+                        {{ cart.totalItemsCount }}
+                    </span>
+                </a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
