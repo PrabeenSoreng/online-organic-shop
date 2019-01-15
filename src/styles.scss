@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+$primary-color: #c1d62e;
+body {
+    padding-top: 80px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.navbar-light .navbar-brand {
+    color: $primary-color;
+}
+
+.list-group-item.active {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+.btn,
+.btn:hover {
+    color: #fff;
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+.btn-danger,
+.btn-danger:hover {
+    background-color: red;
+    border-color: red;
+}
