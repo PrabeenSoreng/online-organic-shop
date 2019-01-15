@@ -6,7 +6,7 @@ import * as firebase from 'firebase';
 import 'firebase/auth';
 import { Observable, of } from 'rxjs';
 import { UserService } from './user.service';
-import { AppUser } from '../models/app-user';
+import { AppUser } from 'shared/models/app-user';
 import { switchMap } from 'rxjs/operators';
 
 @Injectable({

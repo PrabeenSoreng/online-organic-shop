@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { OrderService } from 'src/app/services/order.service';
+import { OrderService } from 'src/app/shared/services/order.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { Order } from 'src/app/models/order';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
