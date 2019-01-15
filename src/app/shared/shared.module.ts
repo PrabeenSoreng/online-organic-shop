@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { CustomFormsModule } from 'ng2-validation';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
@@ -10,10 +16,18 @@ import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    CustomFormsModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    NgbModule.forRoot()
   ],
   declarations: [
     ProductCardComponent,
@@ -30,7 +44,15 @@ import { UserService } from './services/user.service';
   ],
   exports: [
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    CommonModule,
+    FormsModule,
+    CustomFormsModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    NgbModule.forRoot().ngModule
   ]
 })
 export class SharedModule { }
